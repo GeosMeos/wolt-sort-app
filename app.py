@@ -17,6 +17,13 @@ def encode_url(address_string) -> str:
 
 
 def get_place_id(place_address) -> str:
+    """
+    Given an address string, returns the place_id via the api.
+    :param place_address: the address
+    :type place_address: str
+    :return: place_id
+    :rtype: str
+    """
     base_url = (
         "https://restaurant-api.wolt.com/v1/google/places/autocomplete/json?input="
     )
@@ -28,7 +35,14 @@ def get_place_id(place_address) -> str:
     return response["predictions"][0]["place_id"]
 
 
-def get_location(place_id) -> str:
+def get_location(place_id) -> dict:
+    """
+    Given a place_id string, returns the location(lng,lat) via the api.
+    :param place_id: the place_id
+    :type place_id: str
+    :return: location(lng,lat)
+    :rtype: dict
+    """
     base_url = "https://restaurant-api.wolt.com/v1/google/geocode/json?place_id="
     lang = "&language=he"
     request_url = base_url + place_id + lang
@@ -36,7 +50,14 @@ def get_location(place_id) -> str:
     return response["results"][0]["geometry"]["location"]
 
 
-def get_venues(coords) -> list:
+def get_venues(coords) -> dict:
+    """
+    Given a set of coordinates, returns the venues via the api.
+    :param coords: the place_id
+    :type coords: str
+    :return: venues
+    :rtype: dict
+    """
     base_url = "https://restaurant-api.wolt.com/v1/pages/delivery?"
     lat = str(coords["lat"])
     lon = str(coords["lng"])
@@ -57,9 +78,7 @@ if __name__ == "__main__":
         status = p["venue"]["online"]  # online status
         score = p["venue"]["rating"]["score"]  # rating score
         price_range = p["venue"]["price_range"]  # price_range
-        venue = Venue(
-            title, address, delivery_price, status, score, price_range
-        )  # objectify venue
+        venue = Venue(title, address, delivery_price, status, score, price_range)
         print(
             f"""Name: {venue.title}\n 
             Address: {venue.address}\n 
