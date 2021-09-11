@@ -1,3 +1,4 @@
+from models.venue import Venue
 import requests
 import json
 import urllib
@@ -16,7 +17,9 @@ def encode_url(address_string) -> str:
 
 
 def get_place_id(place_address) -> str:
-    base_url = "https://restaurant-api.wolt.com/v1/google/places/autocomplete/json?input="
+    base_url = (
+        "https://restaurant-api.wolt.com/v1/google/places/autocomplete/json?input="
+    )
     encoded_address = encode_url(place_address)
     lang = "&language=he"
     type = "&types=geocode"
@@ -48,4 +51,21 @@ if __name__ == "__main__":
     location = get_location(place_id)
     venues = get_venues(location)
     for p in venues:
-        print(p["title"])
+        title = p["title"]  # title
+        address = p["venue"]["address"]  # address
+        delivery_price = p["venue"]["delivery_price"]  # delivery_price
+        status = p["venue"]["online"]  # online status
+        score = p["venue"]["rating"]["score"]  # rating score
+        price_range = p["venue"]["price_range"]  # price_range
+        venue = Venue(
+            title, address, delivery_price, status, score, price_range
+        )  # objectify venue
+        print(
+            f"""Name: {venue.title}\n 
+            Address: {venue.address}\n 
+            Delivery Price: {venue.delivery_price}\n 
+            Open?: {venue.status}\n
+            Score: {venue.score}\n
+            Price Range: {venue.price_range}
+            """
+        )
