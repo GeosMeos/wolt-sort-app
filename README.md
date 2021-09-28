@@ -1,11 +1,36 @@
 # Idea
 
-I want to filter resutrants based on rating or price.
+I want to filter wolt resutrants based on rating or price.
 
-## How
 
-API calls to Wolt API, wrapped in a set of functions
+## Installation and configuration
 
-## Goal
+### Virtual env is recommended:
 
-Maybe a roulette or web app.
+```
+python3 -m venv venv
+.\venv\Scripts\Activate.ps1
+```
+
+### Start by installing requirements:
+
+```
+pip3 install -r requirements.txt
+```
+
+### Export environment variables:
+
+```
+setx FLASK_APP "app.py"
+```
+
+### Run the flask application:
+
+```
+flask run
+```
+
+
+## Good to know
+
+Logs are stored in app.log
