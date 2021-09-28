@@ -1,0 +1,24 @@
+
+<table>
+    <p>
+    <caption style="color:blue;text-align:center;">Venues as of {{time}}</caption>
+    </p>
+<tr>
+    <th scope="col",style="padding: 10px;text-align: center; border: 1px solid black;">Title</th>
+    <th scope="col",style="padding: 10px;text-align: center; border: 1px solid black;">Address</th>
+    <th scope="col",style="padding: 10px;text-align: center; border: 1px solid black;">Delivery price</th>
+    <th scope="col",style="padding: 10px;text-align: center; border: 1px solid black;">Status</th>
+    <th scope="col",style="padding: 10px;text-align: center; border: 1px solid black;">Score</th>
+    <th scope="col",style="padding: 10px;text-align: center; border: 1px solid black;">Price range</th>
+</tr>
+{% for venue in form_data %}
+<tr>
+    <td style="padding: 10px;text-align: center; border: 1px solid black;">{{venue.title}}</td>
+    <td style="padding: 10px;text-align: center; border: 1px solid black;">{{venue.address}}</td>
+    <td style="padding: 10px;text-align: center; border: 1px solid black;">{{venue.delivery_price}}</td>
+    <td style="padding: 10px;text-align: center; border: 1px solid black;">{{venue.status}}</td>
+    <td style="padding: 10px;text-align: center; border: 1px solid black;">{{venue.score}}</td>
+    <td style="padding: 10px;text-align: center; border: 1px solid black;">{{venue.price_range}}</td>
+</tr>
+{% endfor %}
+</table>
