@@ -73,6 +73,8 @@ def build_venues(venues_list):
     """
     ToDo: Docs
     """
+    # with open("data.json", "w") as fout:
+    #     json.dump(list, fout)
     venueObjList = []
     for p in venues_list:
         try:
@@ -90,14 +92,19 @@ def build_venues(venues_list):
     return venueObjList
 
 
-def get_venues_by_address(address):
+def get_venues_by_address(address, mock=False):
     """
     ToDo: Docs
     """
-    place_id = get_place_id(address)
-    location = get_location(place_id)
-    venues_list = get_venues(location)
-    venues = build_venues(venues_list)
+    if not mock:
+        place_id = get_place_id(address)
+        location = get_location(place_id)
+        venues_list = get_venues(location)
+        venues = build_venues(venues_list)
+    else:
+        with open(r"data.json", "r") as read_file:
+            mock = json.load(read_file)
+            venues = build_venues(mock)
     return venues
 
 

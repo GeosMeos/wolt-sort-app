@@ -25,7 +25,7 @@ def data():
         return redirect(url_for("form"))
     if request.method == "POST":
         address = request.form.get("Address")
-        form_data = get_venues_by_address(address)
+        form_data = get_venues_by_address(address, mock=True)
         return render_template("data.html", form_data=form_data, time=current_time)
 
 
