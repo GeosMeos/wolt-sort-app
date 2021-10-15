@@ -10,6 +10,8 @@ I want to filter wolt resutrants based on rating or price.
 ```
 python3 -m venv venv
 .\venv\Scripts\Activate.ps1
+or
+source venv/bin/activate
 ```
 
 ### Start by installing requirements:
@@ -22,6 +24,8 @@ pip3 install -r requirements.txt
 
 ```
 setx FLASK_APP "app.py"
+or
+export FLASK_APP=app.py
 ```
 
 ### Run the flask application:
