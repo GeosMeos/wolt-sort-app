@@ -12,6 +12,16 @@ app = Flask(__name__)
 
 
 def calculate_distance(base_location, venue_location):
+    """
+    A function to calculate the distance in km between two location coordinates.
+    :param base_location: lat,long of the client
+    :param venue_location: long,lat of the venue
+    :type base_location: dict
+    :type venue_location: list
+    :return: distance in km
+    :rtype: float
+    """
+    # Switch lat,long coordinates
     venue_location[0], venue_location[1] = venue_location[1], venue_location[0]
     km = distance.distance(base_location.values(), venue_location).km
     return km
@@ -19,7 +29,15 @@ def calculate_distance(base_location, venue_location):
 
 def sort_data(form_data, inputs, location):
     """
-    # Given data and input, sort and return
+    Given venue data,inputs and location sort and return data.
+    :param form_data: list of Venue objects
+    :param inputs: user inputs dict
+    :param location: lat, long coordinates of the client
+    :type form_data: list
+    :type inputs: dict
+    :type location: dict
+    :return: sorted list of venue objects
+    :rtype: list
     """
     try:
         if inputs["options"] == "o0":  # lowest time estimate

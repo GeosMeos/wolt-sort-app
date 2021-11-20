@@ -71,7 +71,11 @@ def get_venues(coords) -> dict:
 
 def build_venues(venues_list):
     """
-    ToDo: Docs
+    Given a dict of venues, constructs a list of Venue objects.
+    :param venues_list: dict of venues
+    :type venues_list: dict
+    :return: list of Venue objects
+    :rtype: list
     """
     # with open("data.json", "w") as fout:
     #     json.dump(list, fout)
@@ -105,25 +109,23 @@ def build_venues(venues_list):
 
 def get_venues_by_address(address, mock=False):
     """
-    ToDo: Docs
+    Given an address, builds a list of venue objects.
+    Also used for serving mock data.json.
+    :param address: address of the client
+    :type address: str
+    :param mock: wether to use mock
+    :type mock: bool
+    :return: a list of Venue objects and location dict
+    :rtype: list
     """
-    if not mock:
+    if not mock and address:
         place_id = get_place_id(address)
         location = get_location(place_id)
         venues_list = get_venues(location)
         venues = build_venues(venues_list)
-    else:
+    else:  # Throw mock data in case there's no input
         with open(r"data.json", "r") as read_file:
             mock = json.load(read_file)
-            location = {"lat": 32.0828404, "lng": 34.8157317}
+            location = {"lat": 32.0828404, "lng": 34.8157317}  # some location
             venues = build_venues(mock)
     return venues, location
-
-
-"""
-if __name__ == "__main__":
-    address = "הרצל 45 רמת גן"
-    venues = get_venues_by_address(address)
-    for v in venues:
-        print(v.title)
-"""
