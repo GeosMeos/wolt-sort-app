@@ -65,7 +65,7 @@ def data():
         return redirect(url_for("form"))
     if request.method == "POST":
         address = request.form.get("Address")
-        data = get_venues_by_address(address, mock=True)
+        data = get_venues_by_address(address, mock=False)
         form_data = data[0]
         location = data[1]
     form_data = sort_data(form_data, inputs=request.form, location=location)
@@ -73,4 +73,4 @@ def data():
 
 
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+    app.run(port=5000, debug=False)
