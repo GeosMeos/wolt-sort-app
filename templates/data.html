@@ -7,9 +7,10 @@
     <th scope="col",style="padding: 10px;text-align: center; border: 1px solid black;">Title</th>
     <th scope="col",style="padding: 10px;text-align: center; border: 1px solid black;">Address</th>
     <th scope="col",style="padding: 10px;text-align: center; border: 1px solid black;">Delivery price</th>
-    <th scope="col",style="padding: 10px;text-align: center; border: 1px solid black;">Status</th>
+    <th scope="col",style="padding: 10px;text-align: center; border: 1px solid black;">Open</th>
     <th scope="col",style="padding: 10px;text-align: center; border: 1px solid black;">Score</th>
     <th scope="col",style="padding: 10px;text-align: center; border: 1px solid black;">Price range</th>
+    <th scope="col",style="padding: 10px;text-align: center; border: 1px solid black;">Time Estimate</th>
 </tr>
 {% for venue in form_data %}
 <tr>
@@ -19,6 +20,8 @@
     <td style="padding: 10px;text-align: center; border: 1px solid black;">{{venue.status}}</td>
     <td style="padding: 10px;text-align: center; border: 1px solid black;">{{venue.score}}</td>
     <td style="padding: 10px;text-align: center; border: 1px solid black;">{{venue.price_range}}</td>
+    <td style="padding: 10px;text-align: center; border: 1px solid black;">{{venue.estimate
+    }}</td>
 </tr>
 {% endfor %}
 </table>

@@ -84,10 +84,21 @@ def build_venues(venues_list):
             status = p["venue"]["online"]  # online status
             score = p["venue"]["rating"]["score"]  # rating score
             price_range = p["venue"]["price_range"]  # price_range
+            location = p["venue"]["location"]  # location
+            estimate = p["venue"]["estimate"]  # estimate
         except KeyError as e:
             logging.info(f"KeyError with: {e} | for {title}")
         finally:
-            venue = Venue(title, address, delivery_price, status, score, price_range)
+            venue = Venue(
+                title,
+                address,
+                delivery_price,
+                status,
+                score,
+                price_range,
+                location,
+                estimate,
+            )
             venueObjList.append(venue)
     return venueObjList
 
@@ -104,8 +115,9 @@ def get_venues_by_address(address, mock=False):
     else:
         with open(r"data.json", "r") as read_file:
             mock = json.load(read_file)
+            location = {"lat": 32.0828404, "lng": 34.8157317}
             venues = build_venues(mock)
-    return venues
+    return venues, location
 
 
 """
