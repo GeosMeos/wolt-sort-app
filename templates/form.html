@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+
 <head>
     <meta charset="UTF-8">
-    <title>Rolt</title>
+    <title>Wolt Sort App</title>
 </head>
+
 <body>
-   <h1 style="text-align:center">Welcome to WolterWhite</h1>
-    <div style="text-align:center;">
-     <form action="/data" method = "POST" >
-      <p>Address <input type = "text" name = "Address" /></p>
-      <input type="radio" name="options" value = "o0"> Lowest time estimate </input>
-      <input type="radio" name="options" value = "o1"> Cheapest delivery price </input>
-      <input type="radio" name="options" value = "o2"> Highest rating score </input>
-      <input type="radio" name="options", value = "o3"> Cheapest price rating </input>
-      <input type="radio" name="options", value = "o4"> Closest by distance </input>
-      <div><input type="checkbox" name="hide_closed"/>Hide Closed</input<br></div>
-      <p><input type = "submit" value = "DO IT!" /></p>
-     </form>
+    <h1>Welcome to Wolt Sort App!</h1>
+    <p>
+        <h2 id="instructions">Instructions</h2>
+        <h4 id="instructions">1. Enter your address.</h4>
+        <h4 id="instructions">2. Select your sorting method.</h4>
+        <h4 id="instructions">3. Check "Hide Closed" if you wish to see open venues only.</h4>
+        <h4 id="instructions">4. Click on "Sort Venues" to see results.</h4>
+    </p>
+    <div>
+        <form action="/data" method="POST">
+            <p>Address <input type="text" name="Address" /></p>
+            <p>
+                <input type="radio" name="options" value="o0"> Lowest time estimate </input>
+                <input type="radio" name="options" value="o1"> Cheapest delivery price </input>
+                <input type="radio" name="options" value="o2"> Highest rating score </input>
+                <input type="radio" name="options" , value="o3"> Cheapest price rating </input>
+                <input type="radio" name="options" , value="o4"> Closest by distance </input>
+            </p>
+            <p><input type="checkbox" name="hide_closed" />Hide Closed</input<br>
+            </p>
+            <p><input type="submit" value="Sort Venues" id="sort_venue" /></p>
+        </form>
     </div>
 </body>
+
 </html>
