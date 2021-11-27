@@ -19,3 +19,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: geosmeos/wolt-sort-app
           short-description: ${{ github.event.repository.description }}
+          readme-filepath: ./DREADME.md
