@@ -9,6 +9,7 @@ class Venue:
         price_range,
         location,
         estimate,
+        slug,
     ):
         self.title = title
         self.address = address
@@ -18,3 +19,4 @@ class Venue:
         self.price_range = price_range
         self.location = location
         self.estimate = estimate
+        self.slug = slug

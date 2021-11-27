@@ -14,14 +14,17 @@
     </tr>
     {% for venue in form_data %}
     <tr>
-        <td>{{venue.title}}</td>
+        <td><a href="https://wolt.com/en/isr/tel-aviv/restaurant/{{venue.slug}}" target="_blank">{{venue.title}}</a>
+        </td>
         <td>{{venue.address}}</td>
         <td>{{venue.delivery_price}}</td>
         <td>{{venue.status}}</td>
         <td>{{venue.score}}</td>
         <td>{{venue.price_range}}</td>
-        <td>{{venue.estimate
-    }}</td>
+        <td>{{venue.estimate}} Minutes</td>
     </tr>
     {% endfor %}
 </table>
+<footer>
+    <p><a href="https://github.com/GeosMeos" target="_blank">Visit My GitHub Page</a></p>
+</footer>

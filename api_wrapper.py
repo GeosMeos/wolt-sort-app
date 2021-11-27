@@ -1,4 +1,5 @@
 from models.venue import Venue
+from models.default import default_venue
 import requests
 import json
 import urllib
@@ -31,7 +32,7 @@ def get_place_id(place_address) -> str:
         "https://restaurant-api.wolt.com/v1/google/places/autocomplete/json?input="
     )
     encoded_address = encode_url(place_address)
-    lang = "&language=he"
+    lang = "&language=en"
     type = "&types=geocode"
     request_url = base_url + encoded_address + lang + type
     response = requests.request("GET", request_url).json()
@@ -90,6 +91,7 @@ def build_venues(venues_list):
             price_range = p["venue"]["price_range"]  # price_range
             location = p["venue"]["location"]  # location
             estimate = p["venue"]["estimate"]  # estimate
+            slug = p["venue"]["slug"]  # slug for url
         except KeyError as e:
             logging.info(f"KeyError with: {e} | for {title}")
         finally:
@@ -102,6 +104,7 @@ def build_venues(venues_list):
                 price_range,
                 location,
                 estimate,
+                slug,
             )
             venueObjList.append(venue)
     return venueObjList
@@ -119,10 +122,15 @@ def get_venues_by_address(address, mock=False):
     :rtype: list
     """
     if not mock and address:
-        place_id = get_place_id(address)
-        location = get_location(place_id)
-        venues_list = get_venues(location)
-        venues = build_venues(venues_list)
+        try:
+            place_id = get_place_id(address)
+            location = get_location(place_id)
+            venues_list = get_venues(location)
+            venues = build_venues(venues_list)
+        except Exception:
+            venues = [default_venue]
+            location = {}
+            return venues, location
     else:  # Throw mock data in case there's no input
         with open(r"data.json", "r") as read_file:
             mock = json.load(read_file)
