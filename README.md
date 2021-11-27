@@ -3,38 +3,51 @@
 I want to filter wolt resutrants based on rating or price.
 
 
-## Installation and configuration
+## Method 1 - Local Install
 
-### Virtual env is recommended:
-
+### Using virtual env:
+Start the virtual environment
 ```
 python3 -m venv venv
+```
+Activate the virtual environment
+```
+# Windows
 .\venv\Scripts\Activate.ps1
-or
+# Linux
 source venv/bin/activate
 ```
 
-### Start by installing requirements:
-
+### Installing requirements:
+Execute
 ```
 pip3 install -r requirements.txt
 ```
 
-### Export environment variables:
-
+### Environment variables:
+Create environment variables for Flask application
 ```
+# Windows
 setx FLASK_APP "app.py"
-or
+# Linux
 export FLASK_APP=app.py
 ```
-
 ### Run the flask application:
-
 ```
 flask run
 ```
+and navigate to localhost:8080 
 
+## Method 2 - Dockerfile:
 
-## Good to know
+Install docker and execute the following commands:
 
-Logs are stored in app.log
+build the image
+```
+docker build -t geosmeos/wolt-sort-app:latest .
+```
+run the container from image
+```
+docker run -d --name wolt-sort -p 8080:8080  geosmeos/wolt-sort-app:latest
+```
+and navigate to localhost:8080 

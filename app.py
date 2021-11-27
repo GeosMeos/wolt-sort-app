@@ -53,8 +53,8 @@ def sort_data(form_data, inputs, location):
             )
         elif inputs["options"] == "o4":
             form_data = sorted(
-                form_data, key=lambda x: calculate_distance(location, x.location)
-            )
+                form_data,
+                key=lambda x: calculate_distance(location, x.location))
 
         try:
             if inputs["hide_closed"] == "on":
@@ -91,4 +91,4 @@ def data():
 
 
 if __name__ == "__main__":
-    app.run(port=5000, debug=False)
+    app.run(host="0.0.0.0", port=8080, debug=False)

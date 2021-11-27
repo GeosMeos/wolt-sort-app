@@ -20,17 +20,20 @@
         <form action="/data" method="POST">
             <p>Address <input type="text" name="Address" /></p>
             <p>
-                <input type="radio" name="options" value="o0"> Lowest time estimate </input>
+                <input type="radio" name="options" value="o0" checked="checked"> Lowest time estimate </input>
                 <input type="radio" name="options" value="o1"> Cheapest delivery price </input>
                 <input type="radio" name="options" value="o2"> Highest rating score </input>
-                <input type="radio" name="options" , value="o3"> Cheapest price rating </input>
-                <input type="radio" name="options" , value="o4"> Closest by distance </input>
+                <input type="radio" name="options" value="o3"> Cheapest price rating </input>
+                <input type="radio" name="options" value="o4"> Closest by distance </input>
             </p>
-            <p><input type="checkbox" name="hide_closed" />Hide Closed</input<br>
+            <p><input type="checkbox" name="hide_closed" checked="checked" />Hide Closed</input<br>
             </p>
             <p><input type="submit" value="Sort Venues" id="sort_venue" /></p>
         </form>
     </div>
 </body>
+<footer>
+    <p><a href="https://github.com/GeosMeos" target="_blank">Visit My GitHub Page</a></p>
+</footer>
 
 </html>
