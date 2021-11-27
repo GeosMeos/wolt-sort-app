@@ -50,4 +50,8 @@ run the container from image
 ```
 docker run -d --name wolt-sort -p 8080:8080  geosmeos/wolt-sort-app:latest
 ```
-and navigate to localhost:8080 
+and navigate to localhost:8080
+
+## Pulling from DockerHub:
+
+You can pull and run this image from [DockerHub](https://hub.docker.com/r/geosmeos/wolt-sort-app)
