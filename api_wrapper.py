@@ -48,7 +48,7 @@ def get_location(place_id) -> dict:
     :rtype: dict
     """
     base_url = "https://restaurant-api.wolt.com/v1/google/geocode/json?place_id="
-    lang = "&language=he"
+    lang = "&language=en"
     request_url = base_url + place_id + lang
     response = requests.request("GET", request_url).json()
     return response["results"][0]["geometry"]["location"]
